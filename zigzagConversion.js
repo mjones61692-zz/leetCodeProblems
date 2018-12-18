@@ -26,6 +26,9 @@ Output: "PINALSIGYAHRPI"
 */
 
 function zigzagConversion(string, rows) {
+  if (rows === 1) {
+    return string;
+  }
   // row = 0;
   let row = 0;
   // output = ''
@@ -61,4 +64,4 @@ function zigzagConversion(string, rows) {
 };
 
 console.log(zigzagConversion('PAYPALISHIRING', 3)); // PAHNAPLSIIGYIR
-console.log(zigzagConversion('PAYPALISHIRING', 4)); // PINALSIGYAHRPI
+console.log(zigzagConversion('PAYPALISHIRING', 2)); // PINALSIGYAHRPI
