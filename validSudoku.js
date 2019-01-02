@@ -50,31 +50,17 @@ Note:
 */
 
 function validSudoku(grid) {
-  const checkGroup = (rowStart, rowEnd, colStart, colEnd) => {
-    let store = {};
-    for (let r = rowStart; r <= rowEnd; r++) {
-      for (let c = colStart; c <= colEnd; c++) {
-        let num = grid[r][c];
-        if (num === '.') {
-          continue;
-        } else if (store[num]) {
-          return false;
-        } else {
-          store[num] = true;
-        }
-      }
-    }
-    return true;
-  };
+  let mem = {};
   for (let i = 0; i < 9; i++) {
-    if (checkGroup(i, i, 0, 8) === false || checkGroup(0, 8, i, i) === false) {
-      return false;
-    }
-  }
-  for (let i = 0; i < 9; i += 3) {
-    for (let j = 0; j < 9; j += 3) {
-      if (checkGroup(i, i + 2, j, j + 2) === false) {
-        return false;
+    for (let j = 0; j < 9; j++) {
+      let num = grid[i][j];
+      if (num !== '.') {
+        if (mem[`${num} in row ${i}`] || mem[`${num} in col ${j}`] || mem[`${num} in block ${Math.floor(i / 3)} - ${Math.floor(j / 3)}`]) {
+          return false;
+        }
+        mem[`${num} in row ${i}`] = true;
+        mem[`${num} in col ${j}`] = true;
+        mem[`${num} in block ${Math.floor(i / 3)} - ${Math.floor(j / 3)}`] = true;
       }
     }
   }
