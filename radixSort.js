@@ -32,3 +32,9 @@ const radixSort = (arr) => {
 
 console.log(radixSort([3, 2, 4, 5, 1])); // [1, 2, 3, 4, 5]
 console.log(radixSort([101, 203, 5, 87, 76, 48])); // [5, 48, 76, 87, 101, 203]
+let arr = Array.from(Array(10), () => Math.floor(Math.random() * 1000));
+let arrSort = arr.sort((a, b) => {
+  return a - b;
+});
+console.log(arrSort);
+console.log(radixSort(arr));
