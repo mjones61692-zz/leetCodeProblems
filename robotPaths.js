@@ -23,10 +23,10 @@ const robotPathsRecurse = function(m, n) {
 // dynamic
 
 const robotPathsDynamic = function(m, n) {
-  let grid = new Array(m).fill(null);
-  grid = grid.map((element) => new Array(n).fill(null));
+  let grid = [];
   let count = 0;
   for (let i = 0; i < m; i++) {
+    grid[i] = [];
     for (let j = 0; j < n; j++) {
       count++;
       if (j === 0 || i === 0) {
